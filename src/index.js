@@ -5,10 +5,12 @@ import RecordGalleryCard from './contexts/recordGalleryCard'
 export default class LinkToAnotherRecordField extends React.Component {
 
     static propTypes = {
-        records: PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            name: PropTypes.string
-        })
+        records: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.string.isRequired,
+                name: PropTypes.string
+            })
+        )
     }
 
     render() {

@@ -4,5 +4,5 @@
 
 Used for linking to a foreign record.	
 
-[npm-badge]: https://img.shields.io/npm/v/@cmds/link-to-another-record.svg
+[npm-badge]: https://img.shields.io/npm/v/@cmds/link-to-another-record-field.svg
 [npm]: https://www.npmjs.org/package/@cmds/link-to-another-record-field
