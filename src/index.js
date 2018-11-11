@@ -1,9 +1,33 @@
-import React, {Component} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+import RecordGalleryCard from './contexts/recordGalleryCard'
 
-export default class extends Component {
-  render() {
-    return <div>
-      <h2>Welcome to React components</h2>
-    </div>
-  }
+export default class LinkToAnotherRecordField extends React.Component {
+
+    static propTypes = {
+        records: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            name: PropTypes.string
+        })
+    }
+
+    render() {
+
+        const {contextId} = this.props
+
+        if (contextId === 'recordGalleryCard') {
+
+            return (
+                <RecordGalleryCard
+                    {...this.props}
+                />
+            )
+        }
+
+        return (
+            <div>
+                Not supported
+            </div>
+        )
+    }
 }

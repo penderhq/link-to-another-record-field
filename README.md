@@ -1,16 +1,8 @@
-# link-to-another-record-field
+# ![LinkToAnotherRecordField](https://user-images.githubusercontent.com/44801418/48109947-2a66c380-e27c-11e8-864a-c77e7502d98a.png) LinkToAnotherRecordField
 
-[![Travis][build-badge]][build]
 [![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
 
-Describe link-to-another-record-field here.
+Used for linking to a foreign record.	
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
-
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
-
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[npm-badge]: https://img.shields.io/npm/v/@cmds/link-to-another-record.svg
+[npm]: https://www.npmjs.org/package/@cmds/link-to-another-record-field
