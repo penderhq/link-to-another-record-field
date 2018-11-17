@@ -333,7 +333,7 @@ const fieldRenderer = ({recordId, field, props}) => {
 class Demo extends Component {
     render() {
         return <div>
-            <h1>LinkToAnotherRecord Demo</h1>
+            <h1>LinkToAnotherRecordField Demo</h1>
             <p>Used for linking to a foreign record.</p>
             <h2>Context based</h2>
             <p>The behaviour of the component changes based on the context in which it is rendered.</p>
