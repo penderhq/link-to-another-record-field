@@ -28,6 +28,13 @@
     "react": "16.x"
   },
   "devDependencies": {
+    "@cmds/attachment-field": "^0.8.0",
+    "@cmds/checkbox-field": "^0.3.0",
+    "@cmds/long-text-field": "^0.3.1",
+    "@cmds/multiple-select-field": "^0.6.0",
+    "@cmds/number-field": "^0.7.0",
+    "@cmds/single-line-text-field": "^0.6.0",
+    "@cmds/single-select-field": "^0.4.0",
     "nwb": "0.23.x",
     "react": "^16.6.1",
     "react-dom": "^16.6.1"
