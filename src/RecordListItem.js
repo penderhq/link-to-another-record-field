@@ -5,7 +5,7 @@ import {css, cx} from 'emotion'
 export default class RecordListItem extends React.Component {
 
     static propTypes = {
-        recordId: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
         name: PropTypes.string,
         fields: PropTypes.arrayOf(
             PropTypes.shape({
@@ -16,7 +16,8 @@ export default class RecordListItem extends React.Component {
         visibleFieldOrder: PropTypes.arrayOf(
             PropTypes.string.isRequired
         ),
-        fieldRenderer: PropTypes.func
+        fieldRenderer: PropTypes.func,
+        onClick: PropTypes.func
     }
 
     static defaultProps = {
@@ -26,7 +27,14 @@ export default class RecordListItem extends React.Component {
 
     render() {
 
-        const {name, fieldRenderer, visibleFieldOrder, recordId} = this.props
+        const {
+            id,
+            name,
+            fieldRenderer,
+            visibleFieldOrder,
+            recordId,
+            onClick
+        } = this.props
 
         const fieldsById = this.props.fields.reduce((result, field) => {
             result[field.id] = field
@@ -39,23 +47,36 @@ export default class RecordListItem extends React.Component {
 
         return (
             <div
-                className={css`
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    -ms-user-select: none;
-                    user-select: none;
-                    cursor: pointer;
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    background-color: #fff;
-                    border-radius: 6px;
-                    box-shadow: 0 0 0 1px rgba(114,121,133,.3);
-                    &:hover {
-                        box-shadow: 0 0 0 1px rgba(114,121,133,.5);
+                className={cx(
+                    css`
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        cursor: pointer;
+                        display: -webkit-box;
+                        display: -webkit-flex;
+                        display: -ms-flexbox;
+                        display: flex;
+                        background-color: #fff;
+                        border-radius: 6px;
+                        box-shadow: 0 0 0 1px rgba(114,121,133,.3);
+                    `,
+                    onClick ? css`
+                        &:hover {
+                            box-shadow: 0 0 0 1px rgba(114,121,133,.5);
+                        }
+                    ` : null
+                )}
+                onClick={e => {
+
+                    if (onClick) {
+                        onClick({
+                            e,
+                            id
+                        })
                     }
-                `}
+                }}
             >
                 <div
                     className={css`

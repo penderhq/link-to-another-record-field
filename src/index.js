@@ -25,6 +25,7 @@ export default class LinkToAnotherRecordField extends React.Component {
             PropTypes.string.isRequired
         ),
         fieldRenderer: PropTypes.func,
+        onRecordClick: PropTypes.func,
         onLink: PropTypes.func,
         onUnlink: PropTypes.func,
         onClear: PropTypes.func,

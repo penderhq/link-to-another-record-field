@@ -283,6 +283,9 @@ const fieldRenderer = ({recordId, field, props}) => {
             <LinkToAnotherRecordField
                 {...props}
                 records={cell.records}
+                onClick={({id}) => {
+                    alert(`Linked record with id ${id} has been clicked`)
+                }}
             />
         ),
         multipleSelect: ({props, field, cell}) => (
