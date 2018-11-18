@@ -283,9 +283,6 @@ const fieldRenderer = ({recordId, field, props}) => {
             <LinkToAnotherRecordField
                 {...props}
                 records={cell.records}
-                onClick={({id}) => {
-                    alert(`Linked record with id ${id} has been clicked`)
-                }}
             />
         ),
         multipleSelect: ({props, field, cell}) => (
@@ -377,6 +374,9 @@ class Demo extends Component {
                             id: 'rec4',
                             name: 'Jar Jar Binks'
                         }]}
+                        onRecordClick={({id}) => {
+                            alert(`Linked record with id ${id} has been clicked`)
+                        }}
                     />
                 </div>
             </Viewport>

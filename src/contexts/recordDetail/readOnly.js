@@ -14,13 +14,9 @@ export default class LinkToAnotherRecordField extends React.Component {
             onRecordClick
         } = this.props
 
-        if (!records || !records.length) {
-            return null
-        }
-
         return (
             <div>
-                {records.map(record => (
+                {records && records.length ? records.map(record => (
                     <div
                         key={record.id}
                         className={css`
@@ -36,7 +32,7 @@ export default class LinkToAnotherRecordField extends React.Component {
                             onClick={onRecordClick}
                         />
                     </div>
-                ))}
+                )) : null}
             </div>
         )
     }
