@@ -252,7 +252,7 @@ class Viewport extends React.Component {
     }
 }
 
-const fieldRenderer = ({recordId, field, props}) => {
+const fieldRenderer = ({id, field, props}) => {
 
     const renderers = {
         singleLineText: ({props, cell}) => (
@@ -323,7 +323,7 @@ const fieldRenderer = ({recordId, field, props}) => {
     const cell = CELLS[field.id]
 
     return renderer({
-        recordId,
+        id,
         field,
         props,
         cell

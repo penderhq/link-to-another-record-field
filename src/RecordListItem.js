@@ -173,7 +173,7 @@ export default class RecordListItem extends React.Component {
                                     >
                                         {fieldRenderer({
                                             index,
-                                            recordId,
+                                            id,
                                             field,
                                             props: {
                                                 id: field.id,
