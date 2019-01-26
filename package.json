@@ -21,7 +21,7 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "emotion": "^9.2.12",
+    "emotion": "^10.0.6",
     "prop-types": "^15.6.2"
   },
   "peerDependencies": {
@@ -34,7 +34,7 @@
     "@cmds/multiple-select-field": "^0.6.0",
     "@cmds/number-field": "^0.7.0",
     "@cmds/single-line-text-field": "^0.6.0",
-    "@cmds/single-select-field": "^0.4.0",
+    "@cmds/single-select-field": "^0.5.0",
     "nwb": "0.23.x",
     "react": "^16.6.1",
     "react-dom": "^16.6.1"
