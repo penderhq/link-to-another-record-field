@@ -1,5 +1,7 @@
 # ![LinkToAnotherRecordField](https://user-images.githubusercontent.com/44801418/48109947-2a66c380-e27c-11e8-864a-c77e7502d98a.png) LinkToAnotherRecordField
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/entercosmos/link-to-another-record-field.svg)](https://greenkeeper.io/)
+
 [![npm package][npm-badge]][npm]
 
 Used for linking to a foreign record.	
