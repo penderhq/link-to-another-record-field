@@ -9,6 +9,7 @@ import initialState2 from './services/initialState2'
 import createStore from './services/createStore'
 
 const store1 = createStore(initialState1)
+const store3 = createStore(initialState1)
 const store2 = createStore(initialState2)
 
 injectGlobal`
@@ -67,6 +68,15 @@ class Demo extends React.Component {
                     <Example
                         contextId={'recordListItem'}
                         roleId={'readOnly'}
+                    />
+                </Provider>
+                <h2>Max amount of linked records</h2>
+                <Context contextId={'recordDetail'} roleId={'editor'}/>
+                <Provider store={store3}>
+                    <Example
+                        linkMultiple={false}
+                        contextId={'recordDetail'}
+                        roleId={'editor'}
                     />
                 </Provider>
                 <h2>No linked records</h2>

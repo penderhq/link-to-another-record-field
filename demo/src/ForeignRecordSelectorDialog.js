@@ -1,19 +1,33 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import ForeignRecordSelector from '@cmds/foreign-record-selector'
-import recordRenderer from './recordRenderer'
 import Portal from './Portal'
 import Fader from './Fader'
+import fieldRenderer from "./fieldRenderer";
+import {List} from 'immutable'
+import RecordListItem from '@cmds/record-list-item'
+
+const ConnectedRecordListItem = connect((state, props) => {
+
+    const visibleFieldOrder = List(['fld2'])
+
+    const fields = visibleFieldOrder.map(id => {
+        return state.getIn(['fieldsById', id])
+    })
+
+    return {
+        name: state.getIn(['recordsById', props.id, 'cells', 'fld1', 'text']) || 'Untitled',
+        data: state.getIn(['recordsById', props.id]).toJS(),
+        visibleFieldOrder: visibleFieldOrder.toJS(),
+        fields: fields.toJS()
+    }
+})(RecordListItem)
+
+const cellGetter = ({id, data}) => data.cells[id]
 
 class ForeignRecordSelectorDialog extends React.Component {
 
     state = {
-        records: [
-            1,
-            2,
-            3,
-            4
-        ],
         query: ''
     }
 
@@ -33,12 +47,21 @@ class ForeignRecordSelectorDialog extends React.Component {
                         onCreateRecordClick={this.handleCreateRecord}
                         onCloseClick={this.props.onClose}
                         onSelect={this.props.onSelect}
-                        recordRenderer={recordRenderer}
+                        recordRenderer={this.recordRenderer}
                     />
                 </Fader>
             </Portal>
         )
     }
+
+    recordRenderer = ({id, onClick}) => (
+        <ConnectedRecordListItem
+            id={id}
+            fieldRenderer={fieldRenderer}
+            cellDataGetter={cellGetter}
+            onClick={onClick}
+        />
+    )
 
     handleCreateRecord = () => {
 

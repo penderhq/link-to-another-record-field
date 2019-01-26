@@ -23,7 +23,8 @@
   "dependencies": {
     "@cmds/icons": "^0.2.0",
     "emotion": "^9.2.12",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "react": "16.x"
@@ -39,7 +40,6 @@
     "@cmds/single-line-text-field": "^0.6.0",
     "@cmds/single-select-field": "^0.4.0",
     "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.11",
     "nwb": "0.23.x",
     "react": "^16.6.1",
     "react-dom": "^16.6.1",

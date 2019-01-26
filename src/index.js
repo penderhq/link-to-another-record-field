@@ -32,6 +32,10 @@ export default class LinkToAnotherRecordField extends React.Component {
         // onSort: PropTypes.func
     }
 
+    static defaultProps = {
+        recordCount: 0
+    }
+
     render() {
 
         const {contextId, roleId} = this.props

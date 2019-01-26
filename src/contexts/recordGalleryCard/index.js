@@ -1,4 +1,5 @@
 import React from 'react'
+import times from 'lodash/times'
 import {css} from 'emotion'
 
 const Record = ({name}) => (
@@ -28,7 +29,7 @@ export default class RecordGalleryCard extends React.Component {
 
     render() {
 
-        const {records} = this.props
+        const {recordCount, recordGetter} = this.props
 
         return (
             <div
@@ -64,17 +65,19 @@ export default class RecordGalleryCard extends React.Component {
                             overflow: hidden;
                         `}
                     >
-                        {records && records.length ? records.map(id => {
+                        {times(recordCount).map(index => {
 
-                            const record = this.props.recordDataGetter({id})
+                            const recordData = recordGetter({
+                                index
+                            })
 
                             return (
                                 <Record
-                                    key={record.id}
-                                    name={record.name}
+                                    key={index}
+                                    name={recordData.name}
                                 />
                             )
-                        }) : null}
+                        })}
                     </div>
                 </div>
             </div>

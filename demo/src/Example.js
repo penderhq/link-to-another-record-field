@@ -1,12 +1,38 @@
 import React from 'react'
+import {css} from 'emotion'
 import uniqueId from 'lodash/uniqueId'
 import sample from 'lodash/sample'
 import {connect} from 'react-redux'
 import LinkToAnotherRecordField from '../../src'
+import UnlinkButton from '../../src/UnlinkButton'
 import ForeignRecordSelectorDialog from './ForeignRecordSelectorDialog'
-import recordRenderer from './recordRenderer'
+
+import {List} from 'immutable'
+import RecordListItem from '@cmds/record-list-item'
+import fieldRenderer from './fieldRenderer'
+
+const ConnectedRecordListItem = connect((state, props) => {
+
+    const visibleFieldOrder = List(['fld2'])
+
+    const fields = visibleFieldOrder.map(id => {
+        return state.getIn(['fieldsById', id])
+    })
+
+    return {
+        name: state.getIn(['recordsById', props.data.id, 'cells', 'fld1', 'text']) || 'Untitled',
+        visibleFieldOrder: visibleFieldOrder.toJS(),
+        fields: fields.toJS()
+    }
+})(RecordListItem)
+
+const cellGetter = ({id, data}) => data.cells[id]
 
 class Example extends React.Component {
+
+    static defaultProps = {
+        linkMultiple: true
+    }
 
     state = {
         selectOpen: false
@@ -20,11 +46,13 @@ class Example extends React.Component {
                     id={'fld1'}
                     contextId={this.props.contextId}
                     roleId={this.props.roleId}
-                    records={this.props.records.toJS()}
-                    recordDataGetter={this.recordDataGetter}
-                    recordRenderer={recordRenderer}
+                    enableLinkButton={this.props.records.isEmpty() || this.props.linkMultiple}
+                    recordCount={this.props.records.count()}
+                    recordGetter={this.recordGetter}
+                    recordRenderer={this.recordRenderer}
+                    onRecordClick={({recordId}) => alert('clicked record: ' + recordId)}
                     onSelect={this.handleSelectStart}
-                    onUnlink={this.handleUnlink}
+                    onRecordUnlink={this.handleUnlink}
                 />
                 {this.state.selectOpen ? (
                     <ForeignRecordSelectorDialog
@@ -37,10 +65,40 @@ class Example extends React.Component {
         )
     }
 
-    recordDataGetter = ({id}) => ({
-        id,
-        name: this.props.recordsById.getIn([id, 'cells', 'fld1', 'text']) || 'Untitled'
-    })
+    recordRenderer = ({key, onClick, onUnlink, recordData, roleId}) => (
+        <div
+            key={key}
+            className={css`
+                position: relative;
+                margin-bottom: 8px;
+            `}
+        >
+
+            <ConnectedRecordListItem
+                id={recordData.id}
+                data={recordData}
+                fieldRenderer={fieldRenderer}
+                cellDataGetter={cellGetter}
+                onClick={onClick}
+            />
+            {roleId === 'editor' ? (
+                <UnlinkButton
+                    onClick={() => onUnlink({id: recordData.id})}
+                />
+            ) : null}
+        </div>
+    )
+
+    recordGetter = ({index}) => {
+
+        const id = this.props.records.get(index)
+
+        return {
+            id,
+            name: this.props.recordsById.getIn([id, 'cells', 'fld1', 'text']) || 'Untitled',
+            cells: this.props.recordsById.getIn([id, 'cells']).toJS()
+        }
+    }
 
     handleCreateRecord = ({name}) => {
 
@@ -74,12 +132,12 @@ class Example extends React.Component {
         })
     }
 
-    handleUnlink = ({id}) => {
+    handleUnlink = ({recordId}) => {
 
         this.props.dispatch({
             type: 'UPDATE_LINK_TO_ANOTHER_RECORD_CELL_BY_UNLINKING_RECORD',
             payload: {
-                recordId: id
+                recordId
             }
         })
     }
