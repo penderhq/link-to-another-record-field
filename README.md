@@ -13,7 +13,7 @@ Used for linking to a foreign record.
 | roleId | Role | ✓ | The behaviour changes based on the role. Valid options include `editor` or `readOnly` |
 | recordCount | Number | ✓ | Number of records linked |
 | recordGetter | Function | ✓ | Callback responsible for returning a data row given an index. `({index: int})` |
-| recordRenderer | Function | ✓ | Responsible for rendering a linked record. `({data: any}): jsx`|
+| recordRenderer | Function | ✓ | Responsible for rendering a linked record. `({key: int, onClick: fn, onUnlink: fn, recordData: any, roleId: string}): jsx`|
 | onRecordClick | Function |  | Callback invoked whenever a linked record get's clicked: `({id: string, recordId: string}): void` |
 | onRecordUnlink | Function |  | Callback invoked whenever the unlink button is clicked for a linked record.: `({id: string, recordId: string}): void` |
 
