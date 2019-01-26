@@ -1,45 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RecordDetailReadOnly from './contexts/recordDetail/readOnly'
+import RecordDetail from './contexts/recordDetail'
 import RecordGalleryCard from './contexts/recordGalleryCard'
 
 export default class LinkToAnotherRecordField extends React.Component {
 
     static propTypes = {
-        id: PropTypes.string.isRequired,
-        contextId: PropTypes.oneOf(['recordDetail', 'recordGridRow', 'recordGalleryCard', 'recordListItem']),
-        roleId: PropTypes.oneOf(['editor', 'readOnly']),
-        records: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                name: PropTypes.string
-            })
-        ),
-        fields: PropTypes.arrayOf(
-            PropTypes.shape({
-                id: PropTypes.string.isRequired,
-                name: PropTypes.string.isRequired
-            })
-        ),
-        visibleFieldOrder: PropTypes.arrayOf(
-            PropTypes.string.isRequired
-        ),
-        fieldRenderer: PropTypes.func,
-        onRecordClick: PropTypes.func,
-        onLink: PropTypes.func,
-        onUnlink: PropTypes.func,
-        onClear: PropTypes.func,
-        onSort: PropTypes.func
+        // id: PropTypes.string.isRequired,
+        // contextId: PropTypes.oneOf(['recordDetail', 'recordGridRow', 'recordGalleryCard', 'recordListItem']),
+        // roleId: PropTypes.oneOf(['editor', 'readOnly']),
+        // records: PropTypes.arrayOf(
+        //     PropTypes.shape({
+        //         id: PropTypes.string.isRequired,
+        //         name: PropTypes.string
+        //     })
+        // ),
+        // fields: PropTypes.arrayOf(
+        //     PropTypes.shape({
+        //         id: PropTypes.string.isRequired,
+        //         name: PropTypes.string.isRequired
+        //     })
+        // ),
+        // visibleFieldOrder: PropTypes.arrayOf(
+        //     PropTypes.string.isRequired
+        // ),
+        // fieldRenderer: PropTypes.func,
+        // onRecordClick: PropTypes.func,
+        // onLink: PropTypes.func,
+        // onUnlink: PropTypes.func,
+        // onClear: PropTypes.func,
+        // onSort: PropTypes.func
     }
 
     render() {
 
         const {contextId, roleId} = this.props
 
-        if (contextId === 'recordDetail' && roleId === 'readOnly') {
+        if (contextId === 'recordDetail') {
 
             return (
-                <RecordDetailReadOnly
+                <RecordDetail
                     {...this.props}
                 />
             )

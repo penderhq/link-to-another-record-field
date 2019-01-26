@@ -38,7 +38,6 @@ export default class RecordGalleryCard extends React.Component {
                     padding: 0;
                     margin: 0;
                     vertical-align: top;
-                    background: #fff;
                     color: #000;
                     display: flex;
                     flex-wrap: wrap;
@@ -65,12 +64,17 @@ export default class RecordGalleryCard extends React.Component {
                             overflow: hidden;
                         `}
                     >
-                        {records && records.length ? records.map(record => (
-                            <Record
-                                key={record.id}
-                                name={record.name}
-                            />
-                        )) : null}
+                        {records && records.length ? records.map(id => {
+
+                            const record = this.props.recordDataGetter({id})
+
+                            return (
+                                <Record
+                                    key={record.id}
+                                    name={record.name}
+                                />
+                            )
+                        }) : null}
                     </div>
                 </div>
             </div>
