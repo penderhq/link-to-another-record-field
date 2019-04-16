@@ -1,5 +1,5 @@
-import plus from '@cmds/icons/es/plus2'
-import unlink from '@cmds/icons/es/unlink'
+import plus from '@cmds/icons/lib/plus'
+import unlink from '@cmds/icons/lib/unlink'
 
 export default {
     plus,

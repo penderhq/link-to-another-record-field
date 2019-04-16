@@ -1,6 +1,7 @@
 import React from 'react'
 import times from 'lodash/times'
 import {css} from 'emotion'
+import Button from '@cmds/button'
 import icons from '../../icons'
 
 export default class LinkToAnotherRecordField extends React.Component {
@@ -12,35 +13,18 @@ export default class LinkToAnotherRecordField extends React.Component {
         return (
             <div>
                 {enableLinkButton && roleId === 'editor' ? (
-                    <button
-                        type={'button'}
+                    <div
                         className={css`
-                        background: rgba(0, 0, 0, 0.1);
-                        padding: 8px 16px;
-                        font-weight: 700;
-                        border: none;
-                        cursor: pointer;
-                        border-radius: 4px;
-                        margin-bottom: 8px;
-                        &:active {
-                            background-color: rgba(0,0,0,0.2);
-                        }
-                    `}
-                        onClick={this.handleSelect}
-                    >
-                        <div
-                            className={css`
-                            display: flex;
-                            align-items: center;
+                            margin-bottom: 24px;
                         `}
+                    >
+                        <Button
+                            icon={icons.plus}
+                            onClick={this.handleSelect}
                         >
-                            {icons.plus({
-                                height: 12,
-                                className: css`margin-right: 8px;`
-                            })}
                             Link to a record
-                        </div>
-                    </button>
+                        </Button>
+                    </div>
                 ) : null}
                 {recordCount ? (
                     <div>
@@ -56,7 +40,11 @@ export default class LinkToAnotherRecordField extends React.Component {
                         ))}
                     </div>
                 ) : (
-                    <div>
+                    <div
+                        className={css`
+                            opacity: 0.7;
+                        `}
+                    >
                         No linked records
                     </div>
                 )}
