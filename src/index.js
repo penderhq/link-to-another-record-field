@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import RecordDetail from './contexts/recordDetail'
 import RecordGalleryCard from './contexts/recordGalleryCard'
+import defaultEmptyRenderer from './defaultEmptyRenderer'
 
 export default class LinkToAnotherRecordField extends React.Component {
 
@@ -23,12 +24,14 @@ export default class LinkToAnotherRecordField extends React.Component {
     render() {
 
         const {contextId, roleId} = this.props
+        const emptyRenderer = this.props.emptyRenderer || defaultEmptyRenderer
 
         if (contextId === 'recordDetail') {
 
             return (
                 <RecordDetail
                     {...this.props}
+                    emptyRenderer={emptyRenderer}
                 />
             )
         }
@@ -38,6 +41,7 @@ export default class LinkToAnotherRecordField extends React.Component {
             return (
                 <RecordGalleryCard
                     {...this.props}
+                    emptyRenderer={emptyRenderer}
                 />
             )
         }
@@ -47,6 +51,7 @@ export default class LinkToAnotherRecordField extends React.Component {
             return (
                 <RecordGalleryCard
                     {...this.props}
+                    emptyRenderer={emptyRenderer}
                 />
             )
         }

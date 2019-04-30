@@ -4,6 +4,30 @@ import {css} from 'emotion'
 import Button from '@cmds/button'
 import icons from '../../icons'
 
+const EmptyState = ({children}) => (
+    <div
+        className={css`
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 30px;
+            text-align: center;
+            @media (min-width: 720px) {
+                padding-top: 50px;
+                padding-bottom: 50px;
+            }
+        `}
+    >
+        <div
+            className={css`
+                color: #000;
+                font-size: 16px;
+            `}
+        >
+            {children}
+        </div>
+    </div>
+)
+
 export default class LinkToAnotherRecordField extends React.Component {
 
     render() {
@@ -29,25 +53,27 @@ export default class LinkToAnotherRecordField extends React.Component {
                 {recordCount ? (
                     <div>
                         {times(recordCount).map(index => (
-                            recordRenderer({
-                                key: index,
-                                index,
-                                recordData: recordGetter({index}),
-                                roleId,
-                                onClick: this.handleClick,
-                                onUnlink: this.handleUnlink
-                            })
+                            <div
+                                key={index}
+                                className={css`
+                                    margin-bottom: 24px;
+                                `}
+                            >
+                                {recordRenderer({
+                                    index,
+                                    recordData: recordGetter({index}),
+                                    roleId,
+                                    onClick: this.handleClick,
+                                    onUnlink: this.handleUnlink
+                                })}
+                            </div>
                         ))}
                     </div>
-                ) : (
-                    <div
-                        className={css`
-                            opacity: 0.7;
-                        `}
-                    >
-                        No linked records
-                    </div>
-                )}
+                ) : this.props.roleId === 'editor' ? (
+                    <EmptyState>
+                        There are no records linked to this field
+                    </EmptyState>
+                ) : this.props.emptyRenderer()}
             </div>
         )
     }

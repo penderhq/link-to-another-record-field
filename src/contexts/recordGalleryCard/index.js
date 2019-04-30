@@ -5,8 +5,9 @@ import {css} from 'emotion'
 const Record = ({name}) => (
     <div
         className={css`
-            background-color: #000;
-            color: #fff;
+            background-color: rgba(0,0,0,.1);
+            color: #666;
+            box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
             border-radius: 3px;
             padding-left: 4px;
             padding-right: 4px;
@@ -29,7 +30,7 @@ export default class RecordGalleryCard extends React.Component {
 
     render() {
 
-        const {recordCount, recordGetter} = this.props
+        const {recordCount, recordGetter, emptyRenderer} = this.props
 
         return (
             <div
@@ -48,7 +49,6 @@ export default class RecordGalleryCard extends React.Component {
                 <div
                     className={css`
                         position: relative;
-                        overflow: hidden;
                     `}
                 >
                     <div
@@ -62,9 +62,9 @@ export default class RecordGalleryCard extends React.Component {
                             flex: 1 1 auto;
                             min-width: 0;
                             min-height: 0;
-                            overflow: hidden;
                         `}
                     >
+                        {!recordCount ? emptyRenderer() : null}
                         {times(recordCount).map(index => {
 
                             const recordData = recordGetter({

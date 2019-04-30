@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Canvas, Heading, Paragraph, Box} from '@cmds/demo-utils'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
 import {css, injectGlobal} from 'emotion'
@@ -18,76 +19,108 @@ injectGlobal`
     }
     body {
         font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        margin: 0;
     }
 `
-
-const Context = ({contextId, roleId}) => (
-    <div
-        className={css`
-            margin-top: 32px;
-            margin-bottom: 24px;
-        `}
-    >
-        <strong>Context:</strong> {contextId}, <strong>Role:</strong> {roleId}
-    </div>
-)
 
 class Demo extends React.Component {
 
     render() {
 
         return (
-            <div>
-                <h1>
-                    LinkToAnotherRecordField Demo
-                </h1>
-                <h2>With linked records</h2>
-                <Context contextId={'recordDetail'} roleId={'editor'}/>
-                <Provider store={store2}>
-                    <Example
-                        contextId={'recordDetail'}
-                        roleId={'editor'}
-                    />
-                </Provider>
-                <Context contextId={'recordDetail'} roleId={'readOnly'}/>
-                <Provider store={store2}>
-                    <Example
-                        contextId={'recordDetail'}
-                        roleId={'readOnly'}
-                    />
-                </Provider>
-                <Context contextId={'recordGalleryCard'} roleId={'readOnly'}/>
-                <Provider store={store2}>
-                    <Example
-                        contextId={'recordGalleryCard'}
-                        roleId={'readOnly'}
-                    />
-                </Provider>
-                <Context contextId={'recordListItem'} roleId={'readOnly'}/>
-                <Provider store={store2}>
-                    <Example
-                        contextId={'recordListItem'}
-                        roleId={'readOnly'}
-                    />
-                </Provider>
-                <h2>Max amount of linked records</h2>
-                <Context contextId={'recordDetail'} roleId={'editor'}/>
-                <Provider store={store3}>
-                    <Example
-                        linkMultiple={false}
-                        contextId={'recordDetail'}
-                        roleId={'editor'}
-                    />
-                </Provider>
-                <h2>No linked records</h2>
-                <Context contextId={'recordDetail'} roleId={'editor'}/>
-                <Provider store={store1}>
-                    <Example
-                        contextId={'recordDetail'}
-                        roleId={'editor'}
-                    />
-                </Provider>
-            </div>
+            <Canvas>
+                <Heading>Record Detail Context</Heading>
+                <Paragraph>
+                    With linked records and editor role
+                </Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <Example
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
+                    With linked records and read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <Example
+                            contextId={'recordDetail'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>
+                    With no linked records and read only role
+                </Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordDetail'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>Max amount of linked records</Paragraph>
+                <Box>
+                    <Provider store={store3}>
+                        <Example
+                            linkMultiple={false}
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>No linked records</Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordDetail'}
+                            roleId={'editor'}
+                        />
+                    </Provider>
+                </Box>
+                <Heading>Record Gallery Card Context</Heading>
+                <Paragraph>With linked records and read only role</Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <Example
+                            contextId={'recordGalleryCard'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>With no linked records and read only role</Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordGalleryCard'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Heading>Record List Item Context</Heading>
+                <Paragraph>With linked records and read only role</Paragraph>
+                <Box>
+                    <Provider store={store2}>
+                        <Example
+                            contextId={'recordListItem'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+                <Paragraph>With no linked records and read only role</Paragraph>
+                <Box>
+                    <Provider store={store1}>
+                        <Example
+                            contextId={'recordListItem'}
+                            roleId={'readOnly'}
+                        />
+                    </Provider>
+                </Box>
+            </Canvas>
         )
     }
 }

@@ -65,12 +65,10 @@ class Example extends React.Component {
         )
     }
 
-    recordRenderer = ({key, onClick, onUnlink, recordData, roleId}) => (
+    recordRenderer = ({onClick, onUnlink, recordData, roleId}) => (
         <div
-            key={key}
             className={css`
                 position: relative;
-                margin-bottom: 8px;
             `}
         >
 
