@@ -1,11 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ForeignRecordSelector from '@cmds/foreign-record-selector'
+import ForeignRecordSelector from '@pndr/foreign-record-selector'
 import Portal from './Portal'
 import Fader from './Fader'
 import fieldRenderer from "./fieldRenderer";
 import {List} from 'immutable'
-import RecordListItem from '@cmds/record-list-item'
+import RecordListItem from '@pndr/record-list-item'
 
 const ConnectedRecordListItem = connect((state, props) => {
 

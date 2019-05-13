@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {Canvas, Heading, Paragraph, Box} from '@cmds/demo-utils'
-import {render} from 'react-dom'
-import {Provider} from 'react-redux'
-import {css, injectGlobal} from 'emotion'
+import React, { Component } from 'react'
+import { Canvas, Heading, Paragraph, Box } from '@pndr/demo-utils'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { injectGlobal } from 'emotion'
 import Example from './Example'
 
 import initialState1 from './services/initialState1'
@@ -125,4 +125,4 @@ class Demo extends React.Component {
     }
 }
 
-render(<Demo/>, document.querySelector('#demo'))
+render(<Demo />, document.querySelector('#demo'))

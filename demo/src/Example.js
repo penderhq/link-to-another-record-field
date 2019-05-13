@@ -8,7 +8,7 @@ import UnlinkButton from '../../src/UnlinkButton'
 import ForeignRecordSelectorDialog from './ForeignRecordSelectorDialog'
 
 import {List} from 'immutable'
-import RecordListItem from '@cmds/record-list-item'
+import RecordListItem from '@pndr/record-list-item'
 import fieldRenderer from './fieldRenderer'
 
 const ConnectedRecordListItem = connect((state, props) => {

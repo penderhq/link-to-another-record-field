@@ -1,6 +1,6 @@
 import React from 'react'
 import {css} from 'emotion'
-import Button from '@cmds/button'
+import Button from '@pndr/button'
 import icons from './icons'
 
 export default ({onClick}) => (

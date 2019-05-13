@@ -1,7 +1,7 @@
 import React from 'react'
 import times from 'lodash/times'
 import {css} from 'emotion'
-import Button from '@cmds/button'
+import Button from '@pndr/button'
 import icons from '../../icons'
 
 const EmptyState = ({children}) => (
@@ -57,6 +57,9 @@ export default class LinkToAnotherRecordField extends React.Component {
                                 key={index}
                                 className={css`
                                     margin-bottom: 24px;
+                                    &:last-of-type {
+                                        margin-bottom: 0;
+                                    }
                                 `}
                             >
                                 {recordRenderer({
