@@ -1,6 +1,6 @@
 {
   "name": "@pndr/link-to-another-record-field",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Used for linking to a foreign record.",
   "main": "lib/index.js",
   "module": "es/index.js",
