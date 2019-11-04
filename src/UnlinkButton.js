@@ -1,9 +1,9 @@
 import React from 'react'
-import {css} from 'emotion'
+import { css } from 'emotion'
 import Button from '@pndr/button'
 import icons from './icons'
 
-export default ({onClick}) => (
+export default ({ onClick }) => (
     <div
         className={css`
             position: absolute;
@@ -12,6 +12,7 @@ export default ({onClick}) => (
         `}
     >
         <Button
+            size={'sm'}
             icon={icons.unlink}
             onClick={onClick}
         />

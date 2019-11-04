@@ -14,11 +14,15 @@ export default class LinkToAnotherRecordField extends React.Component {
         recordGetter: PropTypes.func.isRequired,
         recordRenderer: PropTypes.func.isRequired,
         onRecordClick: PropTypes.func,
-        onRecordUnlink: PropTypes.func
+        onRecordUnlink: PropTypes.func,
+        linkButtonLabel: PropTypes.string,
+        linkedRecordsEmptyMessage: PropTypes.string
     }
 
     static defaultProps = {
-        recordCount: 0
+        recordCount: 0,
+        linkButtonLabel: 'Link to a record',
+        linkedRecordsEmptyMessage: 'There are no records linked to this field'
     }
 
     render() {

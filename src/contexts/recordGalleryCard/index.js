@@ -36,14 +36,12 @@ export default class RecordGalleryCard extends React.Component {
             <div
                 className={css`
                     position: relative;
-                    font-size: 13px;
                     padding: 0;
                     margin: 0;
-                    vertical-align: top;
-                    color: #000;
                     display: flex;
                     flex-wrap: wrap;
                     width: 100%;
+                    overflow: hidden;
                 `}
             >
                 <div

@@ -1,10 +1,10 @@
 import React from 'react'
 import times from 'lodash/times'
-import {css} from 'emotion'
+import { css } from 'emotion'
 import Button from '@pndr/button'
 import icons from '../../icons'
 
-const EmptyState = ({children}) => (
+const EmptyState = ({ children }) => (
     <div
         className={css`
             background: #f9f9f9;
@@ -32,7 +32,7 @@ export default class LinkToAnotherRecordField extends React.Component {
 
     render() {
 
-        const {recordCount, recordGetter, recordRenderer, roleId, enableLinkButton} = this.props
+        const { recordCount, recordGetter, recordRenderer, roleId, enableLinkButton } = this.props
 
         return (
             <div>
@@ -43,10 +43,11 @@ export default class LinkToAnotherRecordField extends React.Component {
                         `}
                     >
                         <Button
+                            size={'sm'}
                             icon={icons.plus}
                             onClick={this.handleSelect}
                         >
-                            Link to a record
+                            {this.props.linkButtonLabel}
                         </Button>
                     </div>
                 ) : null}
@@ -64,7 +65,7 @@ export default class LinkToAnotherRecordField extends React.Component {
                             >
                                 {recordRenderer({
                                     index,
-                                    recordData: recordGetter({index}),
+                                    recordData: recordGetter({ index }),
                                     roleId,
                                     onClick: this.handleClick,
                                     onUnlink: this.handleUnlink
@@ -74,14 +75,14 @@ export default class LinkToAnotherRecordField extends React.Component {
                     </div>
                 ) : this.props.roleId === 'editor' ? (
                     <EmptyState>
-                        There are no records linked to this field
+                        {this.props.linkedRecordsEmptyMessage}
                     </EmptyState>
                 ) : this.props.emptyRenderer()}
             </div>
         )
     }
 
-    handleClick = ({id}) => {
+    handleClick = ({ id }) => {
 
         if (this.props.onRecordClick) {
 
@@ -92,7 +93,7 @@ export default class LinkToAnotherRecordField extends React.Component {
         }
     }
 
-    handleUnlink = ({id}) => {
+    handleUnlink = ({ id }) => {
 
         if (this.props.onRecordUnlink) {
 
