@@ -1,10 +1,10 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import ForeignRecordSelector from '@pndr/foreign-record-selector'
 import Portal from './Portal'
 import Fader from './Fader'
 import fieldRenderer from "./fieldRenderer";
-import {List} from 'immutable'
+import { List } from 'immutable'
 import RecordListItem from '@pndr/record-list-item'
 
 const ConnectedRecordListItem = connect((state, props) => {
@@ -23,7 +23,7 @@ const ConnectedRecordListItem = connect((state, props) => {
     }
 })(RecordListItem)
 
-const cellGetter = ({id, data}) => data.cells[id]
+const cellGetter = ({ id, data }) => data.cells[id]
 
 class ForeignRecordSelectorDialog extends React.Component {
 
@@ -54,7 +54,7 @@ class ForeignRecordSelectorDialog extends React.Component {
         )
     }
 
-    recordRenderer = ({id, onClick}) => (
+    recordRenderer = ({ id, onClick }) => (
         <ConnectedRecordListItem
             id={id}
             fieldRenderer={fieldRenderer}
@@ -70,9 +70,9 @@ class ForeignRecordSelectorDialog extends React.Component {
         })
     }
 
-    handleQueryChange = ({query}) => {
+    handleQueryChange = ({ query }) => {
 
-        this.setState({query})
+        this.setState({ query })
     }
 }
 

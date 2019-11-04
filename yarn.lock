@@ -193,11 +193,12 @@
   dependencies:
     emotion "^10.0.9"
 
-"@pndr/foreign-record-selector@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@pndr/foreign-record-selector/-/foreign-record-selector-0.3.0.tgz#cc606fe587609dcd58dc9938d3ec8c06fe8b901a"
-  integrity sha512-WURLEf8Mja62V7sFRfxI/Wbx+Y2mVNo8BnyEcD2Nxv0vNg+DsfPY9mo/W53g6MCPjaJL+wtMYx4CuD8yQxCp0w==
+"@pndr/foreign-record-selector@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@pndr/foreign-record-selector/-/foreign-record-selector-0.4.0.tgz#5ca6995257634b570dfea1d7877411fec2e51393"
+  integrity sha512-MtLqVpLR4n0Cs1GeDfOhiCeVR12n11cj9Cyd94DeS6AjZhU1Sc9dO/nFvuRaamxGSqeKBWtWEXK28HOpdqeS3w==
   dependencies:
+    "@pndr/text-input" "^0.6.0"
     prop-types "^15.7.2"
 
 "@pndr/icons@^0.4.0":

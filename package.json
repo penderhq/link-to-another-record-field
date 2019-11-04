@@ -1,6 +1,6 @@
 {
   "name": "@pndr/link-to-another-record-field",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Used for linking to a foreign record.",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -37,7 +37,7 @@
     "@pndr/checkbox-field": "^0.6.0",
     "@pndr/colors": "^0.4.0",
     "@pndr/demo-utils": "^0.3.0",
-    "@pndr/foreign-record-selector": "^0.3.0",
+    "@pndr/foreign-record-selector": "^0.4.0",
     "@pndr/icons": "^0.4.0",
     "@pndr/long-text-field": "^0.12.0",
     "@pndr/multiple-select-field": "^0.11.0",
